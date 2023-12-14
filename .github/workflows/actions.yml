@@ -1,0 +1,25 @@
+name: Social-App/ACTIONS
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  test:
+    name:  Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+          cache: 'maven'
+
+      - name: Build with maven
+        run: mvn -B package --file pom.xml -DskipTests

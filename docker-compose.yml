@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  social-app:
+    image: postgres
+    container_name: social-app-db
+    environment:
+      POSTGRES_DB: social_app
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5434:5432"
